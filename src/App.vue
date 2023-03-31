@@ -2,7 +2,14 @@
 import axios from "axios";
 import { store } from "./store.js";
 
+import Header from "./components/Header.vue";
+import MovieList from "./components/MovieList.vue";
+
 export default {
+  components: {
+    Header,
+    MovieList,
+  },
   data() {
     return {
       store,
@@ -21,6 +28,13 @@ export default {
 };
 </script>
 
-<template></template>
+<template>
+  <Header />
+  <main>
+    <MovieList />
+  </main>
+</template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+@use "./styles/general.scss";
+</style>

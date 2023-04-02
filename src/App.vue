@@ -31,7 +31,9 @@ export default {
 <template>
   <Header />
   <main>
-    <MovieList />
+    <div class="container">
+      <MovieList />
+    </div>
   </main>
 </template>
 

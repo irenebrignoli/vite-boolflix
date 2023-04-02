@@ -15,8 +15,8 @@ export default {
     <img
       v-if="image != null"
       :src="
-        `https://image.tmdb.org/t/p/original${image}` ||
-        `https://image.tmdb.org/t/p/original${imageSerie}`
+        `https://image.tmdb.org/t/p/w342${image}` ||
+        `https://image.tmdb.org/t/p/w342${imageSerie}`
       "
       alt=""
     />

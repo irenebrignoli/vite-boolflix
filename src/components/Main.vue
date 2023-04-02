@@ -28,7 +28,7 @@ export default {
             class="box"
             :key="index"
           >
-            <Card :image="movie.poster_path" />
+            <Card :image="movie.poster_path" :title="movie.title" />
           </div>
         </div>
       </section>
@@ -36,12 +36,8 @@ export default {
       <section id="series">
         <SectionTitle v-show="store.titleVisible == true" title="Serie Tv" />
         <div class="card-container">
-          <div
-            v-for="(movie, index) in store.movieList"
-            class="box"
-            :key="index"
-          >
-            <Card :image="movie.poster_path" />
+          <div v-for="(serie, i) in store.serieList" class="box" :key="i">
+            <Card :imageSerie="serie.poster_path" :titleSerie="serie.name" />
           </div>
         </div>
       </section>

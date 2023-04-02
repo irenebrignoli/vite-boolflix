@@ -41,5 +41,11 @@ header {
     font-size: 25px;
     text-transform: uppercase;
   }
+
+  .search {
+    input {
+      margin-right: 10px;
+    }
+  }
 }
 </style>

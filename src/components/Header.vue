@@ -16,19 +16,26 @@ export default {
   },
   methods: {
     getMovies() {
-      //let urlApi = "https://api.themoviedb.org/3/search/movie";
-      axios
-        .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=38108238e55a723ea029b5154ff23a5b&query=constantine"
-        )
-        .then((response) => {
+      this.store.titleVisible = true;
+
+      if (store.search != "") {
+        let urlMovies =
+          "https://api.themoviedb.org/3/search/movie?api_key=38108238e55a723ea029b5154ff23a5b&query=" +
+          store.search;
+        axios.get(urlMovies).then((response) => {
           this.store.movieList = response.data.results;
-          console.log(response.data.results);
+          console.log("Movies" + this.store.movieList);
         });
+      }
+
+      let urlSeries =
+        "https://api.themoviedb.org/3/search/tv?api_key=38108238e55a723ea029b5154ff23a5b&query=" +
+        store.search;
+      axios.get(urlSeries).then((response) => {
+        this.store.serieList = response.data.results;
+        console.log("Series" + this.store.serieList);
+      });
     },
-  },
-  created() {
-    this.getMovies();
   },
 };
 </script>

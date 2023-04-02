@@ -1,11 +1,13 @@
 <script>
 import { store } from "../store";
 import Card from "./Card.vue";
+import SectionTitle from "./SectionTitle.vue";
 
 export default {
   name: "MovieList",
   components: {
     Card,
+    SectionTitle,
   },
   data() {
     return {
@@ -17,7 +19,7 @@ export default {
 
 <template>
   <section>
-    <h1>Movies</h1>
+    <SectionTitle v-show="store.titleVisible == true" />
     <div class="card-container">
       <div v-for="(movie, index) in store.movieList" class="box" :key="index">
         <Card :image="movie.poster_path" />
@@ -30,7 +32,6 @@ export default {
 @use "../styles/partials/variables" as *;
 
 section {
-  text-align: center;
   padding-top: 130px;
   color: $text-color;
   .card-container {

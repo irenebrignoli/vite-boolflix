@@ -21,10 +21,10 @@ export default {
   <Header />
   <main>
     <div class="container">
-      <div v-if="store.search == ''" class="no-results">
+      <!-- <div v-if="store.search == ''" class="no-results">
         Non ci sono risultati
-      </div>
-      <MovieList v-if="store.search != ''" />
+      </div> -->
+      <MovieList />
     </div>
   </main>
 </template>

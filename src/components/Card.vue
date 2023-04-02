@@ -13,11 +13,8 @@ export default {
 <template>
   <div class="card">
     <img
-      v-if="image != null"
-      :src="
-        `https://image.tmdb.org/t/p/w342${image}` ||
-        `https://image.tmdb.org/t/p/w342${imageSerie}`
-      "
+      v-if="image || imageSerie != null"
+      :src="`https://image.tmdb.org/t/p/w342${image || imageSerie}`"
       alt=""
     />
     <div class="no-image-box" v-else>{{ title || titleSerie }}</div>

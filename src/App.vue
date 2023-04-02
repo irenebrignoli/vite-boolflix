@@ -25,7 +25,6 @@ export default {
           store.search;
         axios.get(urlMovies).then((response) => {
           this.store.movieList = response.data.results;
-          console.log("Movies" + this.store.movieList);
         });
       }
 
@@ -34,7 +33,6 @@ export default {
         store.search;
       axios.get(urlSeries).then((response) => {
         this.store.serieList = response.data.results;
-        console.log("Series" + this.store.serieList);
       });
     },
   },

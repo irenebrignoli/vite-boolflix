@@ -8,11 +8,11 @@
 
 body {
   font-family: sans-serif;
+  background-color: $main-bg-color;
 }
 
 main {
-  background-color: $main-bg-color;
-  height: calc(100% - 80px);
+  height: 100%;
 }
 
 .container {

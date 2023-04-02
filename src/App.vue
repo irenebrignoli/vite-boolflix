@@ -1,5 +1,4 @@
 <script>
-import axios from "axios";
 import { store } from "./store.js";
 
 import Header from "./components/Header.vue";
@@ -15,16 +14,6 @@ export default {
       store,
     };
   },
-  created() {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/search/movie?api_key=38108238e55a723ea029b5154ff23a5b&query=constantine"
-      )
-      .then((response) => {
-        this.store.movieList = response.data.results;
-        console.log(response.data.results);
-      });
-  },
 };
 </script>
 
@@ -32,11 +21,21 @@ export default {
   <Header />
   <main>
     <div class="container">
-      <MovieList />
+      <div v-if="store.search == ''" class="no-results">
+        Non ci sono risultati
+      </div>
+      <MovieList v-if="store.search != ''" />
     </div>
   </main>
 </template>
 
 <style lang="scss">
 @use "./styles/general.scss";
+
+.no-results {
+  text-align: center;
+  padding-top: 130px;
+  font-weight: 700;
+  font-size: 30px;
+}
 </style>

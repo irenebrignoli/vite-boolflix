@@ -19,11 +19,9 @@ export default {
   <section>
     <h1>Movies</h1>
     <div class="card-container">
-      <Card
-        v-for="(movie, index) in store.movieList"
-        :key="index"
-        :image="movie.poster_path"
-      />
+      <div v-for="(movie, index) in store.movieList" class="box" :key="index">
+        <Card :image="movie.poster_path" />
+      </div>
     </div>
   </section>
 </template>
@@ -33,7 +31,7 @@ export default {
 
 section {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 130px;
   color: $text-color;
   .card-container {
     display: flex;

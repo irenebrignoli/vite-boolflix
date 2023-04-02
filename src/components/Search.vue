@@ -1,13 +1,20 @@
 <script>
+import { store } from "../store";
+
 export default {
   name: "Search",
+  data() {
+    return {
+      store,
+    };
+  },
 };
 </script>
 
 <template>
   <div class="search">
-    <input type="text" />
-    <button>Carca</button>
+    <input v-model="store.search" type="text" />
+    <button @click="$emit('doSearch')">Cerca</button>
   </div>
 </template>
 

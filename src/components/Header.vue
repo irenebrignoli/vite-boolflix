@@ -3,6 +3,7 @@ import { store } from "../store";
 
 export default {
   name: "Header",
+  emits: ["doSearch"],
   data() {
     return {
       store,
@@ -15,7 +16,12 @@ export default {
   <header>
     <div class="logo">Boolflix</div>
     <div class="search">
-      <input v-model="store.search" type="text" />
+      <input
+        @keyup.enter="$emit('doSearch')"
+        v-model="store.search"
+        type="text"
+        placeholder="Cerca..."
+      />
       <button @click="$emit('doSearch')">Cerca</button>
     </div>
   </header>

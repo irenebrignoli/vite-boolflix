@@ -20,20 +20,28 @@ export default {
       this.store.titleVisible = true;
 
       if (store.search != "") {
-        let urlMovies =
-          "https://api.themoviedb.org/3/search/movie?api_key=38108238e55a723ea029b5154ff23a5b&query=" +
-          store.search;
-        axios.get(urlMovies).then((response) => {
-          this.store.movieList = response.data.results;
-        });
+        axios
+          .get("https://api.themoviedb.org/3/search/movie", {
+            params: {
+              api_key: this.store.apiKey,
+              query: this.store.search,
+            },
+          })
+          .then((response) => {
+            this.store.movieList = response.data.results;
+          });
       }
 
-      let urlSeries =
-        "https://api.themoviedb.org/3/search/tv?api_key=38108238e55a723ea029b5154ff23a5b&query=" +
-        store.search;
-      axios.get(urlSeries).then((response) => {
-        this.store.serieList = response.data.results;
-      });
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: this.store.apiKey,
+            query: this.store.search,
+          },
+        })
+        .then((response) => {
+          this.store.serieList = response.data.results;
+        });
     },
   },
 };

@@ -23,22 +23,24 @@ export default {
       <section id="movies">
         <SectionTitle v-show="store.titleVisible == true" title="Movies" />
         <div class="card-container">
-          <div
+          <Card
             v-for="(movie, index) in store.movieList"
-            class="box"
             :key="index"
-          >
-            <Card :image="movie.poster_path" :title="movie.title" />
-          </div>
+            :imageM="movie.poster_path"
+            :titleM="movie.title"
+          />
         </div>
       </section>
 
       <section id="series">
         <SectionTitle v-show="store.titleVisible == true" title="Serie Tv" />
         <div class="card-container">
-          <div v-for="(serie, i) in store.serieList" class="box" :key="i">
-            <Card :imageSerie="serie.poster_path" :titleSerie="serie.name" />
-          </div>
+          <Card
+            v-for="(serie, i) in store.serieList"
+            :key="i"
+            :imageS="serie.poster_path"
+            :titleS="serie.name"
+          />
         </div>
       </section>
     </div>

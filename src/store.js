@@ -5,6 +5,7 @@ export const store = reactive({
   serieList: [],
   search: "",
   titleVisible: false,
+  apiKey: "38108238e55a723ea029b5154ff23a5b",
 });
 
 // "https://api.themoviedb.org/3/search/movie?api_key=38108238e55a723ea029b5154ff23a5b&query=constantine"

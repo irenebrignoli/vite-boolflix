@@ -1,11 +1,13 @@
 <script>
+import { stringifyExpression } from "@vue/compiler-core";
+
 export default {
   name: "Card",
   props: {
-    image: String,
-    title: String,
-    imageSerie: String,
-    titleSerie: String,
+    imageS: String,
+    imageM: String,
+    titleS: String,
+    titleM: String,
   },
 };
 </script>
@@ -13,11 +15,11 @@ export default {
 <template>
   <div class="card">
     <img
-      v-if="image || imageSerie != null"
-      :src="`https://image.tmdb.org/t/p/w342${image || imageSerie}`"
+      v-if="imageM || imageS != null"
+      :src="`https://image.tmdb.org/t/p/w342${imageM || imageS}`"
       alt=""
     />
-    <div class="no-image-box" v-else>{{ title || titleSerie }}</div>
+    <div class="no-image-box" v-else>{{ titleM || titleS }}</div>
   </div>
 </template>
 
@@ -25,12 +27,13 @@ export default {
 @use "../styles/partials/variables" as *;
 
 .card {
-  width: 300px;
-  height: 400px;
+  width: 250px;
+  height: 380px;
+  background-color: $no-image-box;
 
   img {
     width: 100%;
-    height: 400px;
+    height: 380px;
     object-fit: cover;
     object-position: top;
   }

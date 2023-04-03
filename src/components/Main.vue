@@ -28,6 +28,9 @@ export default {
             :key="index"
             :imageM="movie.poster_path"
             :titleM="movie.title"
+            :orignalTitleM="movie.original_title"
+            :originalLangM="movie.original_language"
+            :voteM="movie.vote_avarage"
           />
         </div>
       </section>
@@ -40,6 +43,9 @@ export default {
             :key="i"
             :imageS="serie.poster_path"
             :titleS="serie.name"
+            :orignalTitleS="serie.original_name"
+            :originalLangS="serie.original_language"
+            :voteS="serie.vote_avarage"
           />
         </div>
       </section>

@@ -1,19 +1,21 @@
 <script>
-import { stringifyExpression } from "@vue/compiler-core";
-
 export default {
   name: "Card",
   props: {
+    movie: Object,
     imageS: String,
     imageM: String,
     titleS: String,
     titleM: String,
     orignalTitleM: String,
     originalLangM: String,
-    voteM: String,
+    voteM: Number,
     orignalTitleS: String,
     originalLangS: String,
-    voteS: String,
+    voteS: Number,
+  },
+  created() {
+    console.log(this.titleM);
   },
 };
 </script>

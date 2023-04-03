@@ -31,6 +31,7 @@ export default {
             :orignalTitleM="movie.original_title"
             :originalLangM="movie.original_language"
             :voteM="movie.vote_avarage"
+            :movie="movie"
           />
         </div>
       </section>

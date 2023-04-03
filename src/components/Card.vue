@@ -2,20 +2,11 @@
 export default {
   name: "Card",
   props: {
-    movie: Object,
-    imageS: String,
-    imageM: String,
-    titleS: String,
-    titleM: String,
-    orignalTitleM: String,
-    originalLangM: String,
-    voteM: Number,
-    orignalTitleS: String,
-    originalLangS: String,
-    voteS: Number,
+    oggetto: Object,
+    title: String,
   },
-  created() {
-    console.log(this.titleM);
+  mounted() {
+    console.log(this.movie);
   },
 };
 </script>
@@ -25,18 +16,21 @@ export default {
     <div class="card-inner">
       <div class="card-front">
         <img
-          v-if="imageM || imageS != null"
-          :src="`https://image.tmdb.org/t/p/w342${imageM || imageS}`"
-          :alt="titleM || titleS"
+          v-if="oggetto.poster_path != null"
+          :src="`https://image.tmdb.org/t/p/w342${oggetto.poster_path}`"
+          :alt="title"
         />
-        <div class="no-image-box" v-else>{{ titleM || titleS }}</div>
+        <div class="no-image-box" v-else>{{ title }}</div>
       </div>
 
       <div class="card-back">
-        <h2>{{ titleM || titleS }}</h2>
-        <h3>Titolo originale: {{ orignalTitleM || orignalTitleS }}</h3>
-        <div>{{ originalLangM || originalLangS }}</div>
-        <div>{{ voteM || voteS }}</div>
+        <h2>{{ oggetto.title }}</h2>
+        <h3>Titolo originale: {{ title }}</h3>
+        <div>{{ oggetto.vote_average }}</div>
+        <div v-if="(oggetto.original_language = it)">
+          <img src="../../public/Flag-of-Italy-01-1.svg" alt="" />
+        </div>
+        <div v-else>{{ oggetto.original_language }}</div>
       </div>
     </div>
   </div>

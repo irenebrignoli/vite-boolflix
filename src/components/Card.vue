@@ -1,3 +1,4 @@
+ard
 <script>
 export default {
   name: "Card",
@@ -34,8 +35,10 @@ export default {
 </script>
 
 <template>
+  <!-- card -->
   <div class="card">
     <div class="card-inner">
+      <!-- card  front-->
       <div class="card-front">
         <img
           v-if="oggetto.poster_path != null"
@@ -45,24 +48,39 @@ export default {
         <div class="no-image-box" v-else>{{ title }}</div>
       </div>
 
+      <!-- card back-->
       <div class="card-back">
         <h2 class="title">{{ title }}</h2>
-        <div class="original-title">
-          <div>Titolo originale:</div>
+
+        <div v-show="title != originalTitle" class="original-title">
+          <div class="subtitle">Titolo originale:</div>
           <h3>{{ originalTitle }}</h3>
         </div>
-        <div>{{ getStars(oggetto.vote_average) }}</div>
-        <img
-          v-if="flags.includes(oggetto.original_language)"
-          :src="
-            getImageUrl(
-              `../../src/assets/flags/${oggetto.original_language}.png`
-            )
-          "
-          alt="Flag of${oggetto.original_language}`"
-          class="flag"
-        />
-        <div v-else>{{ oggetto.original_language }}</div>
+
+        <div class="rating">
+          <div class="subtitle">Voto:</div>
+          <div v-html="getStars(oggetto.vote_average)"></div>
+        </div>
+
+        <div class="language">
+          <div class="subtitle">Lingua:</div>
+          <img
+            v-if="flags.includes(oggetto.original_language)"
+            :src="
+              getImageUrl(
+                `../../src/assets/flags/${oggetto.original_language}.png`
+              )
+            "
+            alt="Flag of${oggetto.original_language}`"
+            class="flag"
+          />
+          <div v-else>{{ oggetto.original_language }}</div>
+        </div>
+
+        <div v-show="oggetto.overview != ''" class="overview">
+          <div class="subtitle">Overview:</div>
+          <p class="o-text">{{ oggetto.overview }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +92,6 @@ export default {
 .card {
   width: 250px;
   height: 380px;
-  background-color: $no-image-box;
   perspective: 1000px;
 
   &:hover .card-inner {
@@ -86,6 +103,7 @@ export default {
     width: 100%;
     height: 100%;
     transition: transform 0.8s;
+    border: 1px solid $border-card;
     transform-style: preserve-3d;
 
     .card-front,
@@ -115,7 +133,7 @@ export default {
     }
 
     .card-back {
-      color: $text-ccard-back;
+      color: $text-card-back;
       background-color: $no-image-box;
       transform: rotateY(180deg);
       padding: 10px;
@@ -125,20 +143,24 @@ export default {
       align-items: center;
       gap: 15px;
       text-align: center;
+
+      .subtitle {
+        color: #8a8a8a;
+        margin-bottom: 5px;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
       .title {
-        font-size: 25px;
+        font-size: 20px;
+        font-weight: 500;
       }
 
       .original-title {
         align-items: center;
 
-        div {
-          color: #8a8a8a;
-          margin-bottom: 5px;
-        }
-
         h3 {
-          font-size: 18px;
+          font-size: 14px;
+          font-weight: 500;
         }
       }
 
@@ -146,8 +168,22 @@ export default {
         font-size: 16px;
       }
       .flag {
-        width: 50px;
+        width: 40px;
         border: 1px solid #fff;
+      }
+
+      .overview {
+        overflow-y: scroll;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .o-text {
+          font-size: 12px;
+          line-height: 1.3;
+          font-weight: 400;
+        }
       }
     }
   }

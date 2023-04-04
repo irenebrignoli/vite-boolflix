@@ -32,8 +32,11 @@ export default {
       </div>
 
       <div class="card-back">
-        <h2>{{ title }}</h2>
-        <h3>Titolo originale: {{ originalTitle }}</h3>
+        <h2 class="title">{{ title }}</h2>
+        <div class="original-title">
+          <div>Titolo originale:</div>
+          <h3>{{ originalTitle }}</h3>
+        </div>
         <div>{{ oggetto.vote_average }}</div>
         <img
           v-if="flags.includes(oggetto.original_language)"
@@ -68,7 +71,6 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 
@@ -99,9 +101,32 @@ export default {
     }
 
     .card-back {
+      color: $text-ccard-back;
       background-color: $no-image-box;
       transform: rotateY(180deg);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+      .title {
+        font-size: 25px;
+      }
 
+      .original-title {
+        align-items: center;
+
+        div {
+          color: #8a8a8a;
+          margin-bottom: 5px;
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+      }
       .flag {
         width: 50px;
         border: 1px solid #fff;

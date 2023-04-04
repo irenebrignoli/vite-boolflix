@@ -46,6 +46,7 @@ export default {
           :alt="title"
         />
         <div class="no-image-box" v-else>{{ title }}</div>
+        <!-- <img v-else src="../../public/movie-background.avif" alt="" /> -->
       </div>
 
       <!-- card back-->
@@ -121,6 +122,8 @@ export default {
         object-position: top;
       }
       .no-image-box {
+        background-image: url("../../public/movie-background.avif");
+        background-size: contain;
         text-align: center;
         line-height: 1.6;
         display: flex;

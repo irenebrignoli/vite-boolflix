@@ -10,6 +10,20 @@ export default {
     getImageUrl(path) {
       return new URL(path, import.meta.url).href;
     },
+    getStars(number) {
+      let rating = Math.ceil((number / 10) * 5);
+      let output = [];
+
+      for (let i = rating; i >= 1; i--) {
+        output.push('<i class="fa-solid fa-star star"></i>');
+      }
+
+      for (let i = 5 - rating; i >= 1; i--) {
+        output.push('<i class="fa-regular fa-star star"></i>');
+      }
+
+      return output.join("");
+    },
   },
   data() {
     return {
@@ -37,7 +51,7 @@ export default {
           <div>Titolo originale:</div>
           <h3>{{ originalTitle }}</h3>
         </div>
-        <div>{{ oggetto.vote_average }}</div>
+        <div>{{ getStars(oggetto.vote_average) }}</div>
         <img
           v-if="flags.includes(oggetto.original_language)"
           :src="
@@ -126,6 +140,10 @@ export default {
         h3 {
           font-size: 18px;
         }
+      }
+
+      .star {
+        font-size: 16px;
       }
       .flag {
         width: 50px;

@@ -46,12 +46,13 @@ export default {
         </div>
       </section>
 
-      <h2
+      <div
         class="no-results"
         v-if="store.movieList.length == 0 && store.serieList.length == 0"
       >
-        Non ci sono risultati
-      </h2>
+        <img src="../../public/no-results.png" alt="" />
+        <h2>Non ci sono risultati!</h2>
+      </div>
     </div>
   </main>
 </template>
@@ -73,5 +74,17 @@ section {
 
 .no-results {
   margin-top: 100px;
+
+  img {
+    width: 80px;
+    filter: invert(1);
+  }
+
+  h2 {
+    font-size: 25px;
+    color: #d8d5d5;
+    font-weight: 600;
+    margin-top: 10px;
+  }
 }
 </style>

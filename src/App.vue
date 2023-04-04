@@ -1,6 +1,7 @@
 <script>
 import { store } from "./store.js";
 import axios from "axios";
+import "@fontsource/bebas-neue";
 
 import Header from "./components/Header.vue";
 import Main from "./components/Main.vue";

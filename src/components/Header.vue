@@ -45,8 +45,9 @@ header {
 
   .logo {
     color: red;
-    font-size: 25px;
+    font-size: 40px;
     text-transform: uppercase;
+    font-family: "Bebas Neue", cursive;
   }
 
   .search {

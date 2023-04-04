@@ -18,5 +18,8 @@ h1 {
   text-align: center;
   color: $text-color;
   margin-bottom: 30px;
+  font-family: "Bebas Neue", cursive;
+  font-size: 40px;
+  font-weight: 500;
 }
 </style>

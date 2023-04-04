@@ -14,7 +14,7 @@ export default {
 
 <template>
   <header>
-    <div class="logo">Boolflix</div>
+    <a href="#" class="logo"><div>Boolflix</div></a>
     <div class="search">
       <input
         @keyup.enter="$emit('doSearch')"
@@ -48,6 +48,7 @@ header {
     font-size: 40px;
     text-transform: uppercase;
     font-family: "Bebas Neue", cursive;
+    text-decoration: none;
   }
 
   .search {

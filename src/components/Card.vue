@@ -123,6 +123,7 @@ export default {
       }
       .no-image-box {
         background-image: url("../../public/movie-background.avif");
+        padding: 20px;
         background-size: contain;
         text-align: center;
         line-height: 1.6;

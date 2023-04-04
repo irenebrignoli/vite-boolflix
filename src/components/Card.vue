@@ -4,9 +4,17 @@ export default {
   props: {
     oggetto: Object,
     title: String,
+    originalTitle: String,
   },
-  mounted() {
-    console.log(this.movie);
+  methods: {
+    getImageUrl(path) {
+      return new URL(path, import.meta.url).href;
+    },
+  },
+  data() {
+    return {
+      flags: ["it", "en", "es", "de", "fr"],
+    };
   },
 };
 </script>
@@ -24,12 +32,19 @@ export default {
       </div>
 
       <div class="card-back">
-        <h2>{{ oggetto.title }}</h2>
-        <h3>Titolo originale: {{ title }}</h3>
+        <h2>{{ title }}</h2>
+        <h3>Titolo originale: {{ originalTitle }}</h3>
         <div>{{ oggetto.vote_average }}</div>
-        <div v-if="(oggetto.original_language = it)">
-          <img src="../../public/Flag-of-Italy-01-1.svg" alt="" />
-        </div>
+        <img
+          v-if="flags.includes(oggetto.original_language)"
+          :src="
+            getImageUrl(
+              `../../src/assets/flags/${oggetto.original_language}.png`
+            )
+          "
+          alt="Flag of${oggetto.original_language}`"
+          class="flag"
+        />
         <div v-else>{{ oggetto.original_language }}</div>
       </div>
     </div>
@@ -86,6 +101,11 @@ export default {
     .card-back {
       background-color: $no-image-box;
       transform: rotateY(180deg);
+
+      .flag {
+        width: 50px;
+        border: 1px solid #fff;
+      }
     }
   }
 }

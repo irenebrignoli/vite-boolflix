@@ -20,29 +20,38 @@ export default {
 <template>
   <main>
     <div class="container">
-      <section id="movies">
-        <SectionTitle v-show="store.titleVisible == true" title="Movies" />
+      <section v-if="store.movieList.length > 0" id="movies">
+        <SectionTitle title="Movies" />
         <div class="card-container">
           <Card
-            v-for="(movie, index) in store.movieList"
-            :key="index"
+            v-for="movie in store.movieList"
+            :key="movie.id"
             :oggetto="movie"
             :title="movie.title"
+            :originalTitle="movie.original_title"
           />
         </div>
       </section>
 
-      <section id="series">
-        <SectionTitle v-show="store.titleVisible == true" title="Serie Tv" />
+      <section v-if="store.serieList.length > 0" id="series">
+        <SectionTitle title="Serie Tv" />
         <div class="card-container">
           <Card
-            v-for="(serie, i) in store.serieList"
-            :key="i"
+            v-for="serie in store.serieList"
+            :key="serie.id"
             :oggetto="serie"
             :title="serie.name"
+            :originalTitle="serie.original_name"
           />
         </div>
       </section>
+
+      <h2
+        class="no-results"
+        v-if="store.movieList.length == 0 && store.serieList.length == 0"
+      >
+        Non ci sono risultati
+      </h2>
     </div>
   </main>
 </template>
@@ -60,5 +69,9 @@ section {
     margin-top: 30px;
     gap: 20px;
   }
+}
+
+.no-results {
+  margin-top: 100px;
 }
 </style>

@@ -16,22 +16,23 @@ export default {
     };
   },
   methods: {
+    getCalls() {
+      this.getMovies();
+      this.getSeries();
+    },
     getMovies() {
-      this.store.titleVisible = true;
-
-      if (store.search != "") {
-        axios
-          .get("https://api.themoviedb.org/3/search/movie", {
-            params: {
-              api_key: this.store.apiKey,
-              query: this.store.search,
-            },
-          })
-          .then((response) => {
-            this.store.movieList = response.data.results;
-          });
-      }
-
+      axios
+        .get("https://api.themoviedb.org/3/search/movie", {
+          params: {
+            api_key: this.store.apiKey,
+            query: this.store.search,
+          },
+        })
+        .then((response) => {
+          this.store.movieList = response.data.results;
+        });
+    },
+    getSeries() {
       axios
         .get("https://api.themoviedb.org/3/search/tv", {
           params: {
@@ -48,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <Header @doSearch="getMovies" />
+  <Header @doSearch="getCalls" />
   <Main />
 </template>
 

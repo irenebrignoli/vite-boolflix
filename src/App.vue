@@ -27,6 +27,7 @@ export default {
           params: {
             api_key: this.store.apiKey,
             query: this.store.search,
+            language: "it-IT",
           },
         })
         .then((response) => {
@@ -39,12 +40,31 @@ export default {
           params: {
             api_key: this.store.apiKey,
             query: this.store.search,
+            language: "it-IT",
           },
         })
         .then((response) => {
           this.store.serieList = response.data.results;
         });
     },
+    getCasting() {
+      axios
+        .get("`https://api.themoviedb.org/3/movie/1726/credits`", {
+          params: {
+            api_key: this.store.apiKey,
+            //query: this.store.search,
+            //language: "it-IT",
+          },
+        })
+        .then((response) => {
+          this.store.castingList = response.data;
+        });
+
+      console.log(this.store.castingList);
+    },
+  },
+  created() {
+    this.getCasting();
   },
 };
 </script>

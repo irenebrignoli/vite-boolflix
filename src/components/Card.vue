@@ -1,5 +1,7 @@
 ard
 <script>
+import { store } from "../store";
+
 export default {
   name: "Card",
   props: {
@@ -12,7 +14,7 @@ export default {
       return new URL(path, import.meta.url).href;
     },
     getStars(number) {
-      let rating = Math.ceil((number / 10) * 5);
+      let rating = Math.ceil(number / 2);
       let output = [];
 
       for (let i = rating; i >= 1; i--) {
@@ -29,6 +31,7 @@ export default {
   data() {
     return {
       flags: ["it", "en", "es", "de", "fr"],
+      store,
     };
   },
 };
@@ -57,6 +60,8 @@ export default {
           <div class="subtitle">Titolo originale:</div>
           <h3>{{ originalTitle }}</h3>
         </div>
+
+        <div class="cast"></div>
 
         <div class="rating">
           <div class="subtitle">Voto:</div>

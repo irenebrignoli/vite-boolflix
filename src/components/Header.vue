@@ -54,6 +54,24 @@ header {
   .search {
     input {
       margin-right: 10px;
+      color: #fff;
+      background-color: $main-bg-color;
+      border: none;
+      padding: 5px;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 5px;
+      border-radius: 3px;
+      font-weight: 600;
+      color: #fff;
+      background-color: rgb(102, 102, 102);
+
+      &:hover {
+        cursor: pointer;
+        background-color: lighten($color: rgb(102, 102, 102), $amount: 10%);
+      }
     }
   }
 }

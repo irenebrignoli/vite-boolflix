@@ -49,7 +49,7 @@ export default {
     },
     getCasting() {
       axios
-        .get("`https://api.themoviedb.org/3/movie/1726/credits`", {
+        .get("https://api.themoviedb.org/3/movie/1726/credits", {
           params: {
             api_key: this.store.apiKey,
             //query: this.store.search,
@@ -57,14 +57,11 @@ export default {
           },
         })
         .then((response) => {
-          this.store.castingList = response.data;
+          this.store.castingList = response.cast;
         });
 
       console.log(this.store.castingList);
     },
-  },
-  created() {
-    this.getCasting();
   },
 };
 </script>

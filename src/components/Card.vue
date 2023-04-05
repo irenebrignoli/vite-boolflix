@@ -61,7 +61,11 @@ export default {
           <h3>{{ originalTitle }}</h3>
         </div>
 
-        <div class="cast"></div>
+        <!-- <ul class="cast">
+          <li v-for="actor in store.castingList" :key="actor.id">
+            {{ actor.name }}
+          </li>
+        </ul> -->
 
         <div class="rating">
           <div class="subtitle">Voto:</div>
